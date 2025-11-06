@@ -1,6 +1,6 @@
 import Vec2 from "./Vec2.js";
 import { Body } from "./Body.js";
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from "./settings.js";
+import { RESTITUTION, SCREEN_HEIGHT, SCREEN_WIDTH } from "./settings.js";
 
 export class World {
     constructor(gravity=new Vec2(0, 981.4)) {
@@ -13,6 +13,11 @@ export class World {
     }
 
     update(dt) {
+        for (let i = 0; i < this.bodies.length; i++) {
+            for (let j = i + 1; j < this.bodies.length; j++) {
+                this.bodyCollision(this.bodies[i], this.bodies[j], dt);
+            }
+        }
         for (let body of this.bodies) {
             body.applyForce(this.gravity.clone().mult(body.mass));
         }
@@ -40,6 +45,39 @@ export class World {
         } else if (body.pos.y + body.radius > SCREEN_HEIGHT) {
             body.pos.y = SCREEN_HEIGHT - body.radius;
             body.prev_pos.y = body.pos.y + vel.y;
+        }
+    }
+
+    bodyCollision(bodyA, bodyB, dt) {
+        let minDist = bodyA.radius + bodyB.radius;
+        let diff = bodyB.pos.clone().sub(bodyA.pos);
+        let dist = diff.length();
+
+        if (dist < minDist) {
+            let normal = diff.clone().normalize();
+            // Avoid overlap
+            let overlap = minDist - dist;
+            let correction = normal.clone().mult(overlap / (bodyA.mass + bodyB.mass));
+            if (!bodyA.isStatic) bodyA.pos.sub(correction.clone().mult(bodyB.mass));
+            if (!bodyB.isStatic) bodyB.pos.add(correction.clone().mult(bodyA.mass));
+
+
+            // Collision resolution
+            let e = RESTITUTION;
+            let velA = bodyA.getVelocity(dt);
+            let velB = bodyB.getVelocity(dt);
+            let relVel = velA.clone().sub(velB);
+            let relVelAlongNormal = relVel.dot(normal);
+
+            let impulseMag = (-(1 + e) * relVelAlongNormal) / (1/bodyA.mass + 1/bodyB.mass);
+            if (impulseMag > 0) return;
+            let impulse = normal.clone().mult(impulseMag);
+
+            let deltaA = impulse.clone().div(bodyA.mass);
+            let deltaB = impulse.clone().div(bodyB.mass);
+
+            bodyA.setVelocity(velA.clone().add(deltaA), dt);
+            bodyB.setVelocity(velB.clone().sub(deltaB), dt);
         }
     }
 }
