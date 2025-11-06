@@ -10,7 +10,8 @@ new p5((p) => {
         p.createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
 
         world = new World();
-        world.addBody(new Body(200, 200));
+        world.addBody(new Body(600, 200));
+        world.addBody(new Body(1200, 200, 25, -100, 0));
     }
 
     p.draw = () => {
