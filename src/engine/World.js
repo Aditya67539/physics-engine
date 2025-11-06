@@ -2,7 +2,7 @@ import Vec2 from "./Vec2.js";
 import { Body } from "./Body.js";
 
 export class World {
-    constructor(gravity=new Vec2(0, 981.4)) {
+    constructor(gravity=new Vec2(0, 9.4)) {
         this.gravity = gravity;
         this.bodies = [];
     }
