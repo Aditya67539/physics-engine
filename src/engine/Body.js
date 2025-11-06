@@ -18,6 +18,10 @@ export class Body {
         this.prev_pos = this.pos.clone().sub(vel.mult(dt));
     }
 
+    applyForce(force) {
+        this.acc.add(force.div(this.mass));
+    }
+
     update(dt) {
         let vel = this.pos.clone().sub(this.prev_pos);
         this.prev_pos.copy(this.pos);
