@@ -6,13 +6,23 @@ export class World {
     constructor(gravity=new Vec2(0, 981.4)) {
         this.gravity = gravity;
         this.bodies = [];
+        this.sticks = [];
     }
 
     addBody(body) {
         this.bodies.push(body);
     }
 
+    addStick(stick) {
+        this.sticks.push(stick);
+    }
+
     update(dt) {
+        for (let i = 0; i < 10; i++) {
+            for (let stick of this.sticks) {
+                stick.update();
+            }
+        }   
         for (let i = 0; i < this.bodies.length; i++) {
             for (let j = i + 1; j < this.bodies.length; j++) {
                 this.bodyCollision(this.bodies[i], this.bodies[j], dt);
