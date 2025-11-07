@@ -18,7 +18,7 @@ export class World {
     }
 
     update(dt) {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 40; i++) {
             for (let stick of this.sticks) {
                 stick.update();
             }

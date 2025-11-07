@@ -4,6 +4,7 @@ import { World } from "../engine/World.js";
 import { Body } from "../engine/Body.js";
 import Vec2 from "../engine/Vec2.js";
 import { Stick } from "../engine/Stick.js";
+import { Demos } from "../engine/Demos.js";
 
 function randInt(min=0, max=255) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -28,25 +29,7 @@ new p5((p) => {
         //     world.addBody(new Body(x, y, color, 25, vx, vy, 1.0));
         // }
 
-        let rows = 40, coloumns = 15;
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < coloumns; j++) {
-                let color = p.color(randInt(), randInt(), randInt());
-                world.addBody(new Body(500 + i * 25, 200 + j * 25, color, 5, 0, 0, 0.01));
-            }
-        }
-
-    
-        for (let i = 0; i < world.bodies.length - 1; i++) {
-            if ((i + 1) % coloumns !== 0) world.addStick(new Stick(world.bodies[i], world.bodies[i + 1]));
-            if (i + coloumns < rows * coloumns) world.addStick(new Stick(world.bodies[i], world.bodies[i + coloumns]));
-        }
-
-        world.addBody(new Body(350, 100, "red", 25, 0, 0, 1.0, true));
-        world.addBody(new Body(1550, 100, "red", 25, 0, 0, 1.0, true));
-
-        world.addStick(new Stick(world.bodies[0], world.bodies[rows * coloumns]));
-        world.addStick(new Stick(world.bodies[rows * coloumns + 1], world.bodies[rows * coloumns - coloumns]));
+        Demos.fallingBalls(world, p, 150);
     }
 
     p.draw = () => {
