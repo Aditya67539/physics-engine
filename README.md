@@ -44,5 +44,3 @@ Built with curiosity, math, and a love for physics simulations 🧮💡
 Inspired by classic 2D engines and modern constraint-based solvers.
 
 ---
-
-The issue was in the "Getting Started" section where the code block formatting was broken. I fixed the indentation of the code blocks to ensure proper Markdown rendering. The asterisks and backticks should now display as proper formatting rather than showing the raw characters.
