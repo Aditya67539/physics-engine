@@ -28,7 +28,7 @@ A modular and lightweight **2D physics engine** built from scratch in JavaScript
 ## 🧰 Tech Stack
 
 - **JavaScript (ES Modules)**
-- **p5.js** or **Canvas API**
+- **p5.js**
 
 ---
 
