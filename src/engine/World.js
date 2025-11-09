@@ -22,7 +22,12 @@ export class World {
             for (let stick of this.sticks) {
                 stick.update();
             }
-        }   
+        }
+        // for (let i = 0; i < this.bodies.length; i++) {
+        //     for (let j = i + 1; j < this.bodies.length; j++) {
+        //         this.applyGravity(this.bodies[i], this.bodies[j]);
+        //     }
+        // }
         for (let i = 0; i < this.bodies.length; i++) {
             for (let j = i + 1; j < this.bodies.length; j++) {
                 this.bodyCollision(this.bodies[i], this.bodies[j], dt);
@@ -89,5 +94,20 @@ export class World {
             bodyA.setVelocity(velA.clone().add(deltaA), dt);
             bodyB.setVelocity(velB.clone().sub(deltaB), dt);
         }
+    }
+
+    applyGravity(bodyA, bodyB) {
+        const G = 1e8;
+
+        let diff = bodyB.pos.clone().sub(bodyA.pos);
+        let rSq = diff.clone().lengthSq();
+
+        let normal = diff.clone().normalize();
+
+        let forceMag = G * bodyA.mass * bodyB.mass / rSq;
+        let force = normal.clone().mult(forceMag);
+
+        bodyA.applyForce(force);
+        bodyB.applyForce(force.clone().mult(-1));
     }
 }
