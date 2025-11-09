@@ -8,9 +8,9 @@ A modular and lightweight **2D physics engine** built from scratch in JavaScript
 
 | Simulation | Description |
 |-------------|-------------|
-| ![Balls Demo](./assets/balls.gif) | Elastic collisions between multiple bodies. |
+| ![Balls Demo](https://raw.githubusercontent.com/Aditya67539/physics-engine/refs/heads/main/src/assets/fallingBalls.gif) | Elastic collisions between multiple bodies. |
 | ![Cloth Demo](https://raw.githubusercontent.com/Aditya67539/physics-engine/refs/heads/main/src/assets/clothSimulation.gif) | Cloth simulation using stick constraints. |
-| ![Gravity Demo](./assets/gravity.gif) | Bodies attracted to each other using Newtonian gravity. |
+| ![Gravity Demo](https://raw.githubusercontent.com/Aditya67539/physics-engine/refs/heads/main/src/assets/planetSimulation.gif) | Bodies attracted to each other using Newtonian gravity. |
 
 > 💡 *More demos coming soon — including polygon collisions and platform interactions.*
 
