@@ -1,6 +1,6 @@
-import { Stick } from "./Stick.js";
-import { Body } from "./Body.js";
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from "./settings.js";
+import { Stick } from "../engine/Stick.js";
+import { Body } from "../engine/Body.js";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../engine/settings.js";
 
 function randInt(min=0, max=255) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -36,5 +36,10 @@ export const Demos = {
             let color = p.color(randInt(), randInt(), randInt());
             world.addBody(new Body(x, y, color, 25, vx, vy, 1.0));
         }
+    }, 
+
+    planetSimulation(world) {
+        world.addBody(new Body(SCREEN_WIDTH / 1.5, SCREEN_HEIGHT / 2, "yellow", 100, 0, 0, 10.0, true));
+        world.addBody(new Body(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 16, "blue", 25, 400, 0, 1.0));
     }
 }

@@ -1,10 +1,8 @@
 import p5 from "https://cdn.jsdelivr.net/npm/p5@1.9.0/+esm";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../engine/settings.js";
 import { World } from "../engine/World.js";
-import { Body } from "../engine/Body.js";
 import Vec2 from "../engine/Vec2.js";
-import { Stick } from "../engine/Stick.js";
-import { Demos } from "../engine/Demos.js";
+import { Demos } from "./Demos.js";
 
 function randInt(min=0, max=255) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -50,5 +48,10 @@ new p5((p) => {
             p.circle(body.pos.x, body.pos.y, body.circumference);
         }
 
+    }
+
+    p.windowResized = () => {
+        p.resizeCanvas(window.innerWidth, window.innerHeight);
+        console.log(window.innerWidth, window.innerHeight);
     }
 });
