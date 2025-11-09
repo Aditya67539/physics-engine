@@ -1,1 +1,74 @@
-A modular and lightweight 2D physics engine built from scratch in JavaScript.
+# ⚙️ 2D Physics Engine (JavaScript)
+
+A modular and lightweight **2D physics engine** built from scratch in JavaScript.  
+
+---
+
+## 🎬 Demo Previews
+
+| Simulation | Description |
+|-------------|-------------|
+| ![Balls Demo](./assets/balls.gif) | Elastic collisions between multiple bodies. |
+| ![Cloth Demo](./assets/cloth.gif) | Cloth simulation using stick constraints. |
+| ![Gravity Demo](./assets/gravity.gif) | Bodies attracted to each other using Newtonian gravity. |
+
+> 💡 *More demos coming soon — including polygon collisions and platform interactions.*
+
+---
+
+## 🧱 Core Features
+
+- 🧩 **Modular architecture** (`Vec2`, `Body`, `World`, `Integrator`, `Constraint`)
+- ⚡ **Collision detection & resolution**
+- 🪢 **Stick & distance constraints**
+- 🌍 **Configurable gravity and restitution**
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/2d-physics-engine.git
+   cd 2d-physics-engine
+````
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+
+   ```
+   http://localhost:5173/
+   ```
+
+---
+
+## 🧰 Tech Stack
+
+* **JavaScript (ES Modules)**
+* **p5.js** or **Canvas API**
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License** — free for use and modification.
+
+---
+
+## 💬 Acknowledgments
+
+Built with curiosity, math, and a love for physics simulations 🧮💡
+Inspired by classic 2D engines and modern constraint-based solvers.
+
+```
